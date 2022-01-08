@@ -63,7 +63,8 @@
                       <th class="style-middle-center">Giá mới (VNĐ) </th>
                       <th class="style-middle-center">Giá cũ (VNĐ)</th>
                       <th class="style-middle-center">Số lượng</th>
-                      <th class="style-middle-center">Danh mục</th>
+                      <th class="style-middle-center">Sản xuất</th>
+                      <th class="style-middle-center">Danh mục</th>                     
                       <th class="style-middle-center">Chức năng</th>
                     </tr>
                   </thead>
@@ -85,6 +86,8 @@
                       <td class="style-middle-center" id="product-old-price"><%= priceConverter(entry.old_price) %>
                       </td>
                       <td class="style-middle-center" id="product-quantity"><%= entry.quantity %>
+                      </td>
+                      <td class="style-middle-center" id="product-producer"><%= entry.producer %>
                       </td>
                       <td class="style-middle-center" id="product-category"><%= entry.category %>
                       </td>
@@ -135,7 +138,14 @@
                   <input class="form-control ng-untouched ng-pristine ng-valid" type="text" name='category' required=""
                     id="txt-product-category" required>
                 </div>
-              </div>
+              </div>  
+              <div class="form-group row">
+                <label class="col-lg-2 col-md-2 col-form-label">Nhà sản xuất</label>
+                <div class="col-lg-10 col-md-10">
+                  <input class="form-control ng-untouched ng-pristine ng-valid" type="text" name='producer' required=""
+                    id="txt-product-producer" required>
+                </div>
+              </div>              
         
               <div class="form-group row">
                 <label class="col-lg-2 col-md-2 col-form-label">Giá mới</label>
@@ -202,6 +212,7 @@
       $("#my-form").attr('action', '/product/add');
       $('#txt-product-name').attr('value', '');
       $('#txt-product-category').attr('value', '');
+      $('#txt-product-producer').attr('value', '');
       $('#txt-product-price').attr('placeholder', '');
       $('#txt-product-old-price').attr('placeholder', '');
       $('#txt-product-quantity').attr('number', '');
@@ -214,6 +225,7 @@
       $("#my-form").attr('action', '/product/edit');
       var name = $(this).parent().parent().find('#product-name').text();
       var category = $(this).parent().parent().find('#product-category').text();
+      var producer = $(this).parent().parent().find('#product-producer').text();
       var price = $(this).parent().parent().find('#product-price').text();
       //console.log($(this).parent().parent());
       var old_price = $(this).parent().parent().find('#product-old-price').text();
@@ -221,17 +233,16 @@
       var image = $(this).parent().parent().find('#product-image').attr('src');
       var info = $(this).parent().parent().find('#product-info').text();
       var category = $(this).parent().parent().find('#product-category').text().trim();
+      var producer = $(this).parent().parent().find('#product-producer').text().trim();
       $('#txt-product-name').attr('value', name);
       $('#txt-product-category').attr('value', category);
+      $('#txt-product-producer').attr('value', producer);
       $('#txt-product-price').attr('value',  _priceConvert(price));
       $('#txt-product-old-price').attr('value', _priceConvert(old_price));
       $('#txt-product-quantity').attr('value', Number(quantity));
       $('#txt-product-image').attr('src', image);
       $('#txt-product-info').attr('value', info);
-      // $("#category-list option").filter(function () {
-      //   return $(this).text() == category;
-      // }).attr('selected', true);
-      //$('#txt-product-id').attr('value', id);
+      
     })
     var loadFile = function (event) {
       var image = document.getElementById('txt-product-image');
