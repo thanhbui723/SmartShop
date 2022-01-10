@@ -156,6 +156,7 @@ ul {
     padding: 20px;
 }
 
+
 #menu-top a {
     color: #000;
     text-decoration: none;
@@ -382,10 +383,10 @@ ul {
  ============================================================ */
 
 .footer-section {
-    color: #000;
+    color: #000000;
     font-size: 13px;
     /*background: linear-gradient(90deg, #313F40 0%, #536166 100%);*/
-    background-color: #000;
+    background-color: #F0E68C;
     text-align: right;
     height: 57px;
     display: flex;
